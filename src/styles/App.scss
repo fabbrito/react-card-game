@@ -1,0 +1,22 @@
+@use "_variables.scss" as color;
+
+// h1,
+// h2,
+// h3,
+// h4 {
+//   color: $main-text;
+// }
+
+.app {
+  margin: 0;
+}
+
+.main {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+  padding: 2rem 1rem;
+}
