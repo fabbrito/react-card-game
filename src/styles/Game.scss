@@ -1,0 +1,53 @@
+.game {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.deck-slots {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card-slots {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.computer {
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+}
+
+.player {
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn {
+  border-radius: 0.5em;
+  cursor: pointer;
+}
