@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+# Simple Card Game with React
 
-[Material UI > react-autocomplete](https://mui.com/material-ui/react-autocomplete/)
+A SPA that implements a simple card game. Created using _React_, _Typescript_ and _SCSS_.
+
+## Refs
 
 [Exploring Advanced TypeScript Concepts - Guards, Utility Functions, and More](https://www.youtube.com/watch?v=eJ6R1knfsoc)
 
+[Lazy loading React components](https://blog.logrocket.com/lazy-loading-components-in-react-16-6-6cea535c0b52/)
+
 [Multi-range-slider-react-js (forked)](https://codesandbox.io/s/ywcrm?file=/src/component/multiRangeSlider/multiRangeSlider.css)
+
+[Material UI > react-autocomplete](https://mui.com/material-ui/react-autocomplete/)
+
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -49,4 +57,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To learn React, check out the [React documentation](https://reactjs.org/). -->
