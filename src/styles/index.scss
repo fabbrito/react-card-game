@@ -1,0 +1,63 @@
+@use "_variables.scss" as color;
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+* {
+  outline: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", Oxygen, Ubuntu, Cantarell, "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  // font-family: "Zilla Slab";
+}
+
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+body {
+  background-color: color.$background;
+}
+
+a {
+  color: color.$light-blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: color.$secondary;
+  color: color.$secondary--text;
+  border: 1px solid color.$secondary;
+  margin: 0 1rem;
+  font: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: color.$secondary--alt;
+    border-color: color.$secondary--alt;
+    color: color.$secondary--text
+  }
+}
