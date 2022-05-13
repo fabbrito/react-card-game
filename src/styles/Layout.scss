@@ -1,0 +1,6 @@
+@use "_variables.scss" as color;
+
+.layout {
+  color: color.$highlights;
+  width: 100%;
+}
