@@ -1,0 +1,132 @@
+@import "./_variables.scss";
+
+.clickable {
+  cursor: pointer;
+}
+
+.not-clickable {
+  cursor: initial;
+}
+
+.deck {
+  height: 20vh;
+  width: calc(20vh * 5 / 8);
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  border-radius: 0.5rem;
+  color: black;
+  user-select: none;
+}
+
+.computer-deck {
+  /* background-color: green; */
+  background-color: $card-background-color;
+  opacity: 0.8;
+  background-image: linear-gradient(135deg, $card-pattern-color-computer 25%, transparent 25%),
+    linear-gradient(225deg, $card-pattern-color-computer 25%, transparent 25%),
+    linear-gradient(45deg, $card-pattern-color-computer 25%, transparent 25%),
+    linear-gradient(315deg, $card-pattern-color-computer 25%, #e5e5f7 25%);
+  background-position: $card-pattern-size 0, $card-pattern-size 0, 0 0, 0 0;
+  background-size: $card-pattern-size $card-pattern-size;
+  background-repeat: repeat;
+}
+
+.player-deck {
+  /* background-color: blue; */
+  background-color: $card-background-color;
+  opacity: 0.8;
+  background-image: linear-gradient(135deg, $card-pattern-color-player 25%, transparent 25%),
+    linear-gradient(225deg, $card-pattern-color-player 25%, transparent 25%),
+    linear-gradient(45deg, $card-pattern-color-player 25%, transparent 25%),
+    linear-gradient(315deg, $card-pattern-color-player 25%, #e5e5f7 25%);
+  background-position: $card-pattern-size 0, $card-pattern-size 0, 0 0, 0 0;
+  background-size: $card-pattern-size $card-pattern-size;
+  background-repeat: repeat;
+}
+
+.card {
+  position: relative;
+  height: calc(100px * 8 / 5);
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  user-select: none;
+  background-color: $card-background-color;
+  line-height: 1;
+  font-family: "Roboto", sans-serif;
+  opacity: 1;
+  transition: opacity 200ms ease-in-out;
+
+  &.red {
+    color: red;
+  }
+
+  &.black {
+    color: black;
+  }
+
+  &::after,
+  &::before {
+    position: absolute;
+    content: attr(data-card);
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  &::before {
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  &::after {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    transform: rotate(180deg);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+  }
+
+  &.small {
+    height: calc(80px * 8 / 5);
+    width: 80px;
+    font-size: 2.5rem;
+    &::after,
+    &::before {
+      font-size: 0.75rem;
+    }
+  }
+
+  &.large {
+    height: calc(200px * 8 / 5);
+    width: 200px;
+    font-size: 7.5rem;
+    &::after,
+    &::before {
+      font-size: 2.25rem;
+    }
+  }
+}
+/* ------------------------------------------------------- */
+@media (max-width: 620px) {
+  .card {
+    &.small {
+      height: calc(45px * 8 / 5);
+      width: 45px;
+      font-size: 1.75rem;
+
+      &::after,
+      &::before {
+        font-size: 0.5rem;
+      }
+    }
+  }
+}
