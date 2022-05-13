@@ -1,5 +1,11 @@
 # Getting Started with Create React App
 
+[Material UI > react-autocomplete](https://mui.com/material-ui/react-autocomplete/)
+
+[Exploring Advanced TypeScript Concepts - Guards, Utility Functions, and More](https://www.youtube.com/watch?v=eJ6R1knfsoc)
+
+[Multi-range-slider-react-js (forked)](https://codesandbox.io/s/ywcrm?file=/src/component/multiRangeSlider/multiRangeSlider.css)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
