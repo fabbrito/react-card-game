@@ -1,0 +1,61 @@
+@use "_variables.scss" as color;
+
+.header {
+  width: 100%;
+  min-height: 3rem;
+  color: color.$secondary--text;
+  background-color: color.$secondary;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+
+  h2 {
+    margin: 1rem 0.5rem;
+  }
+
+  &.box-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &.stick {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+  }
+
+  .header-main {
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+.logo {
+  height: 3rem;
+  pointer-events: none;
+
+  p,
+  path,
+  circle {
+    fill: color.$secondary--text;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: spin-logo infinite 20s linear;
+  }
+}
+
+@keyframes spin-logo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
