@@ -1,5 +1,4 @@
-@use "_variables.scss" as color;
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@use "./abstracts" as *;
 
 *,
 *::after,
@@ -29,11 +28,11 @@ body {
 }
 
 body {
-  background-color: color.$background;
+  background-color: $background;
 }
 
 a {
-  color: color.$light-blue;
+  color: $light-blue;
   text-decoration: none;
 }
 
@@ -45,9 +44,9 @@ a:hover {
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 0.25rem;
-  background-color: color.$secondary;
-  color: color.$secondary--text;
-  border: 1px solid color.$secondary;
+  background-color: $secondary;
+  color: $secondary--text;
+  border: 1px solid $secondary;
   margin: 0 1rem;
   font: inherit;
   font-weight: bold;
@@ -56,8 +55,8 @@ a:hover {
   &:hover,
   &:focus,
   &:active {
-    background-color: color.$secondary--alt;
-    border-color: color.$secondary--alt;
-    color: color.$secondary--text
+    background-color: $secondary--alt;
+    border-color: $secondary--alt;
+    color: $secondary--text
   }
 }
