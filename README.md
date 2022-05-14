@@ -8,6 +8,10 @@ A SPA that implements a simple card game. Created using _React_, _Typescript_ an
 
 [Lazy loading React components](https://blog.logrocket.com/lazy-loading-components-in-react-16-6-6cea535c0b52/)
 
+[Stop using @import with Sass | @use and @forward explained](https://youtu.be/CR-a8upNjJ0)
+
+[npm > classnames](https://github.com/JedWatson/classnames)
+
 [Multi-range-slider-react-js (forked)](https://codesandbox.io/s/ywcrm?file=/src/component/multiRangeSlider/multiRangeSlider.css)
 
 [Material UI > react-autocomplete](https://mui.com/material-ui/react-autocomplete/)
