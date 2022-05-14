@@ -1,11 +1,4 @@
-@use "_variables.scss" as color;
-
-// h1,
-// h2,
-// h3,
-// h4 {
-//   color: $main-text;
-// }
+@use "./abstracts" as *;
 
 .app {
   margin: 0;

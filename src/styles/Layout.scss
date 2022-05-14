@@ -1,6 +1,6 @@
-@use "_variables.scss" as color;
+@use "./abstracts" as *;
 
 .layout {
-  color: color.$highlights;
+  color: $highlights;
   width: 100%;
 }
