@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Card } from "../lib/Deck";
+import classNames from "classnames";
 import "../styles/CardComponent.scss";
 
 interface Props {
@@ -11,7 +12,9 @@ interface Props {
   onClick?: (card: Card) => void;
   size?: "small" | "normal" | "large";
   disabled?: boolean;
+  middleFlare?: "value" | "suit" | "both" | "none";
   children?: React.ReactNode;
+  className?: string;
 }
 
 const CardComponent: React.FC<Props> = ({
@@ -23,16 +26,14 @@ const CardComponent: React.FC<Props> = ({
   onClick = () => {},
   size,
   disabled = false,
+  middleFlare = "suit",
   children,
+  className = "",
 }) => {
   const handleClick: React.MouseEventHandler<HTMLDivElement> = (event) => {
     if (card == null) return;
     onClick(card);
   };
-
-  const commonClassName = `${clickable ? "clickable" : "not-clickable"} ${size != null && size} ${
-    disabled ? "disabled" : ""
-  }`;
 
   // When using scss modules:
   // [styles["deck"], styles[`${player}-deck`], styles[`${clickable ? "clickable" : "not-clickable"}`]].join(" ")
@@ -42,7 +43,14 @@ const CardComponent: React.FC<Props> = ({
       {faceDown && (
         <div
           id={id}
-          className={`deck ${player != null && [player, "-deck"].join("")} ${commonClassName}`}
+          className={classNames(
+            "deck",
+            { [`${player}-deck`]: player != null },
+            { clickable: clickable, "not-clickable": !clickable },
+            { [`${size}`]: size != null },
+            { disabled: disabled },
+            className
+          )}
           onClick={handleClick}
         >
           {children}
@@ -51,11 +59,21 @@ const CardComponent: React.FC<Props> = ({
       {!faceDown && card != null && (
         <div
           id={id}
-          className={`card ${card.cardColor} ${commonClassName}`}
+          className={classNames(
+            "card",
+            { [`${card.cardColor}`]: card.cardColor != null },
+            { clickable: clickable, "not-clickable": !clickable },
+            { [`${size}`]: size != null },
+            { disabled: disabled },
+            className
+          )}
           data-card={`${card.suit !== "" ? card.suit : ""}${card.value !== "" ? card.value : ""}`}
           onClick={handleClick}
         >
-          {card.suit !== "" ? card.suit : card.value}
+          {middleFlare === "none" && ""}
+          {middleFlare === "suit" && (card.suit !== "" ? card.suit : card.value)}
+          {middleFlare === "value" && (card.value !== "" ? card.value : card.suit)}
+          {middleFlare === "both" && `${card.value !== "" && card.value}${card.suit !== "" && card.suit}`}
         </div>
       )}
     </Fragment>
