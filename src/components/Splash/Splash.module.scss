@@ -1,0 +1,124 @@
+.hand {
+  margin: 3rem;
+
+  /* For modern browsers */
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.hand {
+  zoom: 1;
+}
+
+.card {
+  position: relative;
+  float: left;
+  margin: 0;
+  width: 150px;
+  height: 220px;
+  border-radius: 10px;
+  background: #fff;
+  -webkit-box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+  line-height: 1;
+  color: #000;
+
+  p {
+    margin: 0;
+    text-align: center;
+    font: 100px/220px Georgia, Times New Roman, serif;
+  }
+
+  &.red {
+    color: #f00;
+
+    &::before,
+    &::after {
+      color: #f00;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: attr(data-card);
+    color: #000;
+  }
+
+  &::before {
+    position: absolute;
+    font-size: 35px;
+    left: 5px;
+    top: 5px;
+  }
+
+  &::after {
+    position: absolute;
+    font-size: 35px;
+    right: 5px;
+    bottom: 5px;
+    transform: rotate(180deg);
+  }
+}
+
+.animate {
+  width: 350px;
+  height: 250px;
+  position: relative;
+
+  .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: bottom left;
+
+    &:hover {
+      box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+@for $i from 1 to 5 {
+  .animate.forward .card:nth-child(#{$i}) {
+    animation: card-forward--#{$i} 2s forwards ease;
+  }
+
+  @keyframes card-forward--#{$i} {
+    0% {
+      transform: rotate(0deg) translate(0, 0);
+    }
+    100% {
+      transform: rotate(calc(-35deg + ($i - 1) * 14deg))
+        translate(calc(-7px + ($i - 1) * 14px), calc(7px - ($i - 1) * 14px));
+    }
+  }
+
+  /* Infinite animation creation and keyframes */
+
+  .animate.infinite .card:nth-child(#{$i}) {
+    animation: card-infinite--#{$i} 3s infinite ease-in-out;
+  }
+
+  @keyframes card-infinite--#{$i} {
+    0% {
+      transform: rotate(0deg) translate(0, 0);
+    }
+    50% {
+      transform: rotate(calc(-35deg + ($i - 1) * 14deg))
+        translate(calc(-7px + ($i - 1) * 14px), calc(7px - ($i - 1) * 14px));
+    }
+    100% {
+      transform: rotate(0deg) translate(0, 0);
+    }
+  }
+
+}
+
+/* @media (prefers-reduced-motion: no-preference) {} */
