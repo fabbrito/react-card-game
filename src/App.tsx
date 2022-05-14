@@ -1,9 +1,10 @@
 import React, { useEffect, useState, Suspense, lazy } from "react";
+import Deck, { Card, SUITS, VALUES, CARD_VALUE_MAP } from "./lib/Deck";
 import Header from "./components/Header";
 import Layout from "./components/Layout";
-import Deck, { Card, SUITS, VALUES, CARD_VALUE_MAP } from "./lib/Deck";
-import "./styles/App.scss";
 import Loader from "./components/Loader/Loader";
+import Splash from "./components/Splash/Splash";
+import "./styles/App.scss";
 
 // Lazy import of components (code splitting)
 const ConfigGame = lazy(() => import("./components/ConfigGame"));
@@ -18,6 +19,7 @@ type GameData = { deck: Deck; handSize: number };
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
+  const [splash, setSplash] = useState(true);
   const [isGameStarted, setIsGameStarted] = useState<Boolean>(false);
   const [isGameCompleted, setIsGameCompleted] = useState<Boolean>(false);
   const [gameData, setGameData] = useState<GameData>();
@@ -42,22 +44,30 @@ const App: React.FC = () => {
     console.log(gameData);
   }, [gameData]);
 
+  /* useEffect(() => {
+    setSplash(true);
+    setTimeout(() => {
+      setSplash(false);
+    }, 3000);
+  }, []); */
+
   return (
     <div className="app">
       <Header />
       <main className="main">
         {/* loading && <Loader /> */}
-        {!isGameStarted && !isGameCompleted && (
+        {splash && <Splash />}
+        {!splash && !isGameStarted && !isGameCompleted && (
           <Suspense fallback={<Loader />}>
             <ConfigGame startGame={startGame} />
           </Suspense>
         )}
-        {isGameStarted && (
+        {!splash && isGameStarted && (
           <Suspense fallback={<Loader />}>
             <Game gameData={gameData ?? { deck: new Deck([]), handSize: 3 }} />
           </Suspense>
         )}
-        {isGameCompleted && <div>Game Completed</div>}
+        {!splash && isGameCompleted && <div>Game Completed</div>}
       </main>
     </div>
   );
