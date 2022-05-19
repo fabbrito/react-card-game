@@ -88,8 +88,8 @@ const ConfigGame: React.FC<Props> = ({ children, startGame = () => {} }) => {
             const card = new Card("", value);
             return (
               <CardComponent
-                key={card.compactNotation}
-                id={card.compactNotation}
+                key={card.asString}
+                id={card.asString}
                 card={card}
                 size="small"
                 clickable
@@ -107,8 +107,8 @@ const ConfigGame: React.FC<Props> = ({ children, startGame = () => {} }) => {
             const card = new Card(suit, "");
             return (
               <CardComponent
-                key={card.compactNotation}
-                id={card.compactNotation}
+                key={card.asString}
+                id={card.asString}
                 card={card}
                 size="small"
                 clickable
