@@ -1,22 +1,34 @@
 import React from "react";
-import classNames from "classnames";
+import classNames from "classnames/bind";
 import styles from "./Splash.module.scss";
-import CardComponent from "../CardComponent";
 import { Card } from "../../lib/Deck";
 
-interface Props {}
+let cx = classNames.bind(styles);
 
-const Splash: React.FC<Props> = () => {
+interface Props {
+  spread?: boolean;
+  animate?: string;
+}
+
+const Splash: React.FC<Props> = ({ spread = false, animate }) => {
   const cards = [new Card("♦", "A"), new Card("♥", "A"), new Card("♣", "A"), new Card("♠", "A")];
   return (
-    <div className={classNames(styles["hand"], styles["animate"], styles["forward"])}>
+    <div
+      className={cx(
+        "hand",
+        { spread: spread },
+        { animate: !spread && animate != null },
+        { forward: !spread && animate === "forward" },
+        { infinite: !spread && animate === "infinite" }
+      )}
+    >
       {cards.map((card) => {
         return (
           <div
-            key={card.compactNotation}
-            id={card.compactNotation}
-            className={classNames(styles["card"], styles[`${card.cardColor}`])}
-            data-card={card.compactNotation}
+            key={card.asString}
+            id={card.asString}
+            className={cx("card", { [`${card.cardColor}`]: card.cardColor != null })}
+            data-card={card.asString}
           >
             <p>{card.suit}</p>
           </div>

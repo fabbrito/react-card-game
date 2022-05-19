@@ -1,3 +1,5 @@
+$number-of-cards: 4;
+
 .hand {
   margin: 3rem;
 
@@ -30,6 +32,7 @@
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
   line-height: 1;
   color: #000;
+  user-select: none;
 
   p {
     margin: 0;
@@ -66,6 +69,35 @@
     bottom: 5px;
     transform: rotate(180deg);
   }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.spread {
+  width: 350px;
+  height: 250px;
+  position: relative;
+
+  .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 300ms ease;
+    transform-origin: bottom left;
+
+    &:hover {
+      box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  @for $i from 1 to ($number-of-cards + 1) {
+    &:hover .card:nth-child(#{$i}) {
+      transform: rotate(calc(-35deg + ($i - 1) * 14deg))
+        translate(calc(-7px + ($i - 1) * 14px), calc(7px - ($i - 1) * 14px));
+    }
+  }
 }
 
 .animate {
@@ -83,42 +115,41 @@
       box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
     }
   }
-}
 
-@for $i from 1 to 5 {
-  .animate.forward .card:nth-child(#{$i}) {
-    animation: card-forward--#{$i} 2s forwards ease;
+  @for $i from 1 to ($number-of-cards + 1) {
+    /* Forwards animation creation and keyframes */
+    &.forward .card:nth-child(#{$i}) {
+      animation: card-forward--#{$i} 2s forwards ease;
+    }
+
+    @keyframes card-forward--#{$i} {
+      0% {
+        transform: rotate(0deg) translate(0, 0);
+      }
+      100% {
+        transform: rotate(calc(-35deg + ($i - 1) * 14deg))
+          translate(calc(-7px + ($i - 1) * 14px), calc(7px - ($i - 1) * 14px));
+      }
+    }
+
+    /* Infinite animation creation and keyframes */
+    &.infinite .card:nth-child(#{$i}) {
+      animation: card-infinite--#{$i} 3s infinite ease-in-out;
+    }
+
+    @keyframes card-infinite--#{$i} {
+      0% {
+        transform: rotate(0deg) translate(0, 0);
+      }
+      50% {
+        transform: rotate(calc(-35deg + ($i - 1) * 14deg))
+          translate(calc(-7px + ($i - 1) * 14px), calc(7px - ($i - 1) * 14px));
+      }
+      100% {
+        transform: rotate(0deg) translate(0, 0);
+      }
+    }
   }
-
-  @keyframes card-forward--#{$i} {
-    0% {
-      transform: rotate(0deg) translate(0, 0);
-    }
-    100% {
-      transform: rotate(calc(-35deg + ($i - 1) * 14deg))
-        translate(calc(-7px + ($i - 1) * 14px), calc(7px - ($i - 1) * 14px));
-    }
-  }
-
-  /* Infinite animation creation and keyframes */
-
-  .animate.infinite .card:nth-child(#{$i}) {
-    animation: card-infinite--#{$i} 3s infinite ease-in-out;
-  }
-
-  @keyframes card-infinite--#{$i} {
-    0% {
-      transform: rotate(0deg) translate(0, 0);
-    }
-    50% {
-      transform: rotate(calc(-35deg + ($i - 1) * 14deg))
-        translate(calc(-7px + ($i - 1) * 14px), calc(7px - ($i - 1) * 14px));
-    }
-    100% {
-      transform: rotate(0deg) translate(0, 0);
-    }
-  }
-
 }
 
 /* @media (prefers-reduced-motion: no-preference) {} */
