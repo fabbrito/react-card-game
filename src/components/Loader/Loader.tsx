@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./Loader.module.scss";
+import classnames from "classnames/bind";
+
+let cx = classnames.bind(styles);
 
 interface Props {
   children?: React.ReactNode;
@@ -7,10 +10,10 @@ interface Props {
 
 const Loader: React.FC<Props> = ({ children }) => {
   return (
-    <div className={styles["loader"]}>
-      <span className={[styles["loader__ball"], styles["loader__ball--1"]].join(" ")} />
-      <span className={[styles["loader__ball"], styles["loader__ball--2"]].join(" ")} />
-      <span className={[styles["loader__ball"], styles["loader__ball--3"]].join(" ")} />
+    <div className={cx("loader")}>
+      <span className={cx("loader__ball")} />
+      <span className={cx("loader__ball")} />
+      <span className={cx("loader__ball")} />
     </div>
   );
 };
