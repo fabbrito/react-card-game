@@ -4,6 +4,9 @@ import Header from "./components/Header";
 import Layout from "./components/Layout";
 import Loader from "./components/Loader/Loader";
 import Splash from "./components/Splash/Splash";
+import HandComponent from "./components/Deck/HandComponent";
+import CardComponent from "./components/Deck/CardComponent";
+import DeckComponent from "./components/Deck/DeckComponent";
 import "./styles/App.scss";
 
 // Lazy import of components (code splitting)
@@ -51,12 +54,26 @@ const App: React.FC = () => {
     }, 3000);
   }, []); */
 
+  const sampleHand = [new Card("♦", "J"), new Card("♥", "Q"), new Card("♣", "K"), new Card("♠", "A")];
+
   return (
     <div className="app">
       <Header />
       <main className="main">
         {/* loading && <Loader /> */}
-        {splash && <Splash />}
+        {/* {splash && <Loader />} */}
+        {/* splash && <Splash spread /> */}
+
+        <div className="inline">
+          <DeckComponent player="opponent" deckSize={4} animation="take-one" />
+          <HandComponent player="opponent" obfuscate />
+        </div>
+
+        <div className="inline">
+          <DeckComponent player="player" deckSize={10} animation="take-one" />
+          <HandComponent player="player" cards={sampleHand} />
+        </div>
+
         {!splash && !isGameStarted && !isGameCompleted && (
           <Suspense fallback={<Loader />}>
             <ConfigGame startGame={startGame} />
