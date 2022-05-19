@@ -2,19 +2,31 @@
 
 A SPA that implements a simple card game. Created using _React_, _Typescript_ and _SCSS_.
 
-## Refs
+## Check Later
+
+[typescriptlang.org → Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html)
+
+[benmvp.com → Conditional React props with TypeScript](https://www.benmvp.com/blog/conditional-react-props-typescript/)
 
 [Exploring Advanced TypeScript Concepts - Guards, Utility Functions, and More](https://www.youtube.com/watch?v=eJ6R1knfsoc)
+
+[mariusschulz.com → Passing Generics to JSX Elements in TypeScript](https://mariusschulz.com/blog/passing-generics-to-jsx-elements-in-typescript)
+
+## Refs
 
 [Lazy loading React components](https://blog.logrocket.com/lazy-loading-components-in-react-16-6-6cea535c0b52/)
 
 [Stop using @import with Sass | @use and @forward explained](https://youtu.be/CR-a8upNjJ0)
 
-[npm > classnames](https://github.com/JedWatson/classnames)
+[npm → classnames](https://github.com/JedWatson/classnames)
+
+[PurgeCSS Docs](https://purgecss.com/)
+
+[CODE SNIPPETS → CSS → Multiple Borders](https://css-tricks.com/snippets/css/multiple-borders/)
 
 [Multi-range-slider-react-js (forked)](https://codesandbox.io/s/ywcrm?file=/src/component/multiRangeSlider/multiRangeSlider.css)
 
-[Material UI > react-autocomplete](https://mui.com/material-ui/react-autocomplete/)
+[Material UI → react-autocomplete](https://mui.com/material-ui/react-autocomplete/)
 
 <!-- # Getting Started with Create React App
 
