@@ -29,7 +29,7 @@ export class Card {
     return (this.suit === "♥" || this.suit === "♦" ? "red" : "black") as string;
   }
 
-  get compactNotation() {
+  get asString() {
     return `${this.suit}${this.value}`;
   }
 }

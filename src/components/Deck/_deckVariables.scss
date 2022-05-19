@@ -1,0 +1,20 @@
+$number-of-cards: 4;
+$number-of-deck-cards: 4;
+$deltaY: 5vh;
+$animation-delay: 300ms;
+
+$card-proportion: calc(22 / 15);
+$card-width: min(30vw, 150px);
+$card-height: calc($card-width * $card-proportion);
+$card-font-size-center: min(25vw, 8rem);
+$card-font-size-corner: min(7.5vw, 2rem);
+$card-border-size: 1rem;
+$card-black: #000;
+$card-red: #f00;
+$card-background: #fff;
+$card-back-color-opponent: desaturate(#f74c44, 20%);
+$card-back-color-player:  desaturate(#444cf7, 20%);
+$card-back-color-opponent-dark: rgba($card-back-color-opponent, 0.3);
+$card-back-color-player-dark: rgba($card-back-color-player, 0.3);
+$card-back-color-extra: #e5e5f7;
+$card-pattern-size: 1.5rem;

@@ -1,0 +1,290 @@
+@use "deckVariables" as *;
+// @use "sass:math";
+
+.card {
+  position: relative;
+  float: left;
+  margin: 0;
+  width: $card-width;
+  height: $card-height;
+  border-width: 0.5rem;
+  border-color: $card-background;
+  border-style: solid;
+  border-radius: 0.5rem;
+  background: $card-background;
+
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $card-black;
+
+  will-change: box-shadow;
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  &.not-clickable {
+    cursor: initial;
+  }
+
+  &.shadow {
+    box-shadow: -5px 5px 7px rgba(0, 0, 0, 0.3);
+    &:hover {
+      box-shadow: -5px 5px 7px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  p {
+    margin: 0;
+    font-family: Georgia, Times New Roman, serif;
+    font-size: $card-font-size-center;
+  }
+
+  &.show-info::before {
+    content: attr(data-info);
+    color: $card-black;
+    font-size: $card-font-size-corner;
+    position: absolute;
+    left: -0.7rem;
+    bottom: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    background-color: $card-background;
+    text-align: center;
+    border: 0px solid #000;
+    border-left: 0px;
+    border-top-left-radius: 0.1rem;
+    border-bottom-left-radius: 0.1rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    font-weight: bold;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+  }
+
+  &::before,
+  &::after {
+    content: attr(data-card);
+    color: $card-black;
+    font-size: $card-font-size-corner;
+    line-height: $card-font-size-corner;
+  }
+
+  &.red {
+    color: $card-red;
+
+    &::before,
+    &::after {
+      color: $card-red;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: rotate(180deg);
+  }
+
+  &.active {
+    box-shadow: 0 0 5px 5px hsla(50, 100%, 50%, 0.7);
+    &:hover {
+      box-shadow: 0 0 5px 5px hsla(50, 100%, 50%, 0.9);
+    }
+    // &.player {
+    //   box-shadow: 0 0 5px 5px rgba(68, 76, 247, 0.7);
+    //   &:hover {
+    //     box-shadow: 0 0 5px 5px rgba(68, 76, 247, 0.9);
+    //   }
+    // }
+    // &.opponent {
+    //   box-shadow: 0 0 5px 5px rgba(247, 76, 68, 0.7);
+    //   &:hover {
+    //     box-shadow: 0 0 5px 5px rgba(247, 76, 68, 0.9);
+    //   }
+    // }
+
+    // animation: animate-border 300ms forwards linear;
+    // @keyframes animate-border {
+    //   from {
+    //     border-color: $card-background;
+    //   }
+    //   to {
+    //     border-color: hsl(50, 100%, 50%);
+    //   }
+    // }
+  }
+
+  &.face-down {
+    &::before,
+    &::after {
+      content: none;
+      top: unset;
+      left: unset;
+      right: unset;
+      bottom: unset;
+    }
+
+    &.player {
+      // background-image: url(../../img/cardback-player.gif);
+      background-color: $card-background;
+      // background-image: linear-gradient(135deg, $card-color-player 25%, transparent 25%),
+      //   linear-gradient(225deg, $card-color-player 25%, transparent 25%),
+      //   linear-gradient(45deg, $card-color-player 25%, transparent 25%),
+      //   linear-gradient(315deg, $card-color-player 25%, #e5e5f7 25%);
+      // background-position: $card-pattern-size 0, $card-pattern-size 0, 0 0, 0 0;
+      // background-size: $card-pattern-size $card-pattern-size;
+
+      // background: linear-gradient(135deg, #444cf755 25%, transparent 25%) -15px 0px/ 30px 30px,
+      //   linear-gradient(225deg, #444cf7 25%, transparent 25%) -15px 0px/ 30px 30px,
+      //   linear-gradient(315deg, #444cf755 25%, transparent 25%) 0px 0px/ 30px 30px,
+      //   linear-gradient(45deg, #444cf7 25%, #e5e5f7 25%) 0px 0px/ 30px 30px;
+      background: linear-gradient(135deg, $card-back-color-player-dark 25%, transparent 25%) -15px 0px/ 30px 30px,
+        linear-gradient(225deg, $card-back-color-player 25%, transparent 25%) -15px 0px/ 30px 30px,
+        linear-gradient(315deg, $card-back-color-player-dark 25%, transparent 25%) 0px 0px/ 30px 30px,
+        linear-gradient(45deg, $card-back-color-player 25%, $card-back-color-extra 25%) 0px 0px/ 30px 30px;
+      background-repeat: repeat;
+    }
+
+    &.opponent {
+      // background-image: url(../../img/cardback-opponent.gif);
+      background-color: $card-background;
+      // background-image: linear-gradient(135deg, $card-color-opponent 25%, transparent 25%),
+      //   linear-gradient(225deg, $card-color-opponent 25%, transparent 25%),
+      //   linear-gradient(45deg, $card-color-opponent 25%, transparent 25%),
+      //   linear-gradient(315deg, $card-color-opponent 25%, #e5e5f7 25%);
+      // background-position: $card-pattern-size 0, $card-pattern-size 0, 0 0, 0 0;
+      // background-size: $card-pattern-size $card-pattern-size;
+
+      // background: linear-gradient(135deg, #f74c4455 25%, transparent 25%) -15px 0px/ 30px 30px,
+      //   linear-gradient(225deg, #f74c44 25%, transparent 25%) -15px 0px/ 30px 30px,
+      //   linear-gradient(315deg, #f74c4455 25%, transparent 25%) 0px 0px/ 30px 30px,
+      //   linear-gradient(45deg, #f74c44 25%, #e5e5f7 25%) 0px 0px/ 30px 30px;
+      background: linear-gradient(135deg, $card-back-color-opponent-dark 25%, transparent 25%) -15px 0px/ 30px 30px,
+        linear-gradient(225deg, $card-back-color-opponent 25%, transparent 25%) -15px 0px/ 30px 30px,
+        linear-gradient(315deg, $card-back-color-opponent-dark 25%, transparent 25%) 0px 0px/ 30px 30px,
+        linear-gradient(45deg, $card-back-color-opponent 25%, $card-back-color-extra 25%) 0px 0px/ 30px 30px;
+      background-repeat: repeat;
+    }
+  }
+}
+
+.hand {
+  position: relative;
+  margin: 1vw 1vh;
+  height: calc($card-height + $deltaY);
+  width: calc($card-width * 3);
+
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+
+  .card {
+    position: absolute;
+    top: $deltaY;
+    left: 0;
+    will-change: transform;
+    transition: transform $animation-delay ease;
+    transform-origin: center center;
+
+    @for $i from 1 to ($number-of-cards + 1) {
+      // For each child of .card apply a horizontal translation to evenly spread the cards
+      &:nth-child(#{$i}) {
+        transform: translate(calc(($card-width / 2) * ($i - 1)), 0);
+
+        // If the nth child has :hover, then move it up by deltaY
+        &:hover {
+          transform: translate(calc(($card-width / 2) * ($i - 1)), -$deltaY);
+        }
+        // Loops from (i+1)th to last child and moves them to the right by ($card-width / 2)
+        @for $j from ($i + 1) to ($number-of-cards + 1) {
+          // When ith child has :hover, selects similar and subsequent jth child
+          &:hover ~ .card:nth-child(#{$j}) {
+            transform: translate(calc(($card-width / 2) * $j), 0);
+          }
+        }
+      }
+    }
+  }
+}
+
+.deck {
+  position: relative;
+  margin: 1vw 1vh;
+  height: calc($card-height + $deltaY);
+  width: $card-width;
+
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  &::after {
+    clear: both;
+  }
+
+  &.show-info::after {
+    position: absolute;
+    left: -1vw;
+    bottom: 1rem;
+    padding: 0.5rem 0.5rem;
+    min-width: calc(1.75 * $card-font-size-corner);
+    background-color: $card-background;
+    content: attr(data-info);
+    color: $card-black;
+    font-size: $card-font-size-corner;
+    font-weight: bold;
+    text-align: center;
+    border: 0px solid #000;
+    border-left: 0px;
+    border-top-left-radius: 0.1rem;
+    border-bottom-left-radius: 0.1rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+    // z-index: 10; // if using before
+  }
+
+  .card {
+    position: absolute;
+    top: $deltaY;
+    left: 0;
+
+    &.face-down {
+      &.rotation {
+        transition: transform $animation-delay ease;
+        transform-origin: center;
+      }
+
+      &.take-one {
+        transition: transform $animation-delay ease;
+        transform-origin: bottom left;
+      }
+    }
+  }
+
+  @for $i from 1 to ($number-of-deck-cards + 1) {
+    // if for goes to $number-of-deck-cards + 1 then insert :not(:last-child)
+    &:hover .card.face-down.rotation:nth-child(#{$i}) {
+      transform: rotate(calc(-10deg + 2.5deg * #{$i}));
+    }
+  }
+
+  &:hover .card.face-down.take-one:last-child {
+    transform: rotate(5deg) translateY(calc(-0.5 * $deltaY));
+  }
+}
